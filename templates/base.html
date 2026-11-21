@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>{{ title or 'Elphynix Research Solution' }}</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/app.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="/dashboard" class="brand">Elphynix Research Solution</a>
+    <div>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/projects">Projects</a>
+      <a href="/analytics">Analytics</a>
+      <button type="button" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+  <main>{% block content %}{% endblock %}</main>
+  <script src="{{ url_for('static',filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

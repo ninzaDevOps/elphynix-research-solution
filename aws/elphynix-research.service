@@ -1,0 +1,23 @@
+[Unit]
+Description=Elphynix Research Solution Flask Application
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/opt/elphynix-research
+EnvironmentFile=/opt/elphynix-research/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/elphynix-research/.venv/bin/gunicorn --workers 2 --threads 4 --bind 127.0.0.1:5000 --timeout 60 --access-logfile - --error-logfile - app:app
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/elphynix-research
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Elphynix Research Solution Login</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/app.css') }}">
+</head>
+<body class="login">
+  <section class="login-box">
+    <h1>Elphynix Research Solution</h1>
+    <p>Admin &amp; vendor management dashboard</p>
+    <form id="loginForm">
+      <input id="username" name="username" autocomplete="username" placeholder="Username" required>
+      <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p id="msg" role="alert" aria-live="polite"></p>
+  </section>
+  <script src="{{ url_for('static',filename='js/login.js') }}"></script>
+</body>
+</html>
